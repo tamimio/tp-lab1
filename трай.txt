@@ -1,0 +1,18 @@
+class FileItem
+{
+	string name;
+	string path;
+
+public: 
+	FileItem() {};
+	FileItem (const string& name, const string& path)
+	{
+		this->name = name;
+		this->path = path;
+	}
+	void show()
+	{
+		cout << "File: " << name << endl;
+		cout << "In directory: " << path << endl;
+	}
+};
