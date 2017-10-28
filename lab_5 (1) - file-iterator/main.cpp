@@ -1,4 +1,3 @@
-#include <io.h>
 #include <iostream>
 #include <string>
 
@@ -19,11 +18,9 @@ void main (int argc, char *argv[])
 			return;
 	}
   
-	/*
-		~smth~
+	
+	it -> setFileMask ( FileMask );
 
-		while(it->hasMore)
-			it->Next();
-
-	*/
+	while(it->hasMore())
+		it->Next()->Show();
 }
