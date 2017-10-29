@@ -1,10 +1,8 @@
-﻿Построение начато 29.10.2017 13:05:15.
+﻿Построение начато 29.10.2017 19:04:35.
      1>Проект "C:\Users\usera\Documents\Visual Studio 2012\Projects\2.4-3.5 TechnProg\tp-lab1\lab_5 (1) - file-iterator\lab_5 (1) - file-iterator.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt FileIterator.cpp
-         FileIterator.cpp
-     1>c:\users\usera\documents\visual studio 2012\projects\2.4-3.5 technprog\tp-lab1\lab_5 (1) - file-iterator\fileiterator.cpp(64): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\usera\documents\visual studio 2012\projects\2.4-3.5 technprog\tp-lab1\lab_5 (1) - file-iterator\fileiterator.cpp(65): warning C4018: <: несоответствие типов со знаком и без знака
+         D:\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
        Link:
          D:\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\usera\Documents\Visual Studio 2012\Projects\2.4-3.5 TechnProg\tp-lab1\Debug\lab_5 (1) - file-iterator.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\usera\Documents\Visual Studio 2012\Projects\2.4-3.5 TechnProg\tp-lab1\Debug\lab_5 (1) - file-iterator.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\usera\Documents\Visual Studio 2012\Projects\2.4-3.5 TechnProg\tp-lab1\Debug\lab_5 (1) - file-iterator.lib" /MACHINE:X86 Debug\FileIterator.obj
          Debug\main.obj
@@ -13,4 +11,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:03.67
+Затраченное время: 00:00:03.84

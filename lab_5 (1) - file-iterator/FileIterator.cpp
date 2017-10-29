@@ -16,9 +16,9 @@ FileItem::FileItem (const string& name, const string& path, time_t dateCreate)
 }
 void FileItem::Show()
 {
-	cout << path << "\\" << name << ' ';
-	cout << setfill('0') << setw(2) << dateCreated.tm_mday << '.'
-		 << setfill('0') << setw(2) << 1+dateCreated.tm_mon << '.'
+	cout << left << setfill(' ') << setw(40) << path+"\\"+name;
+	cout << right << setfill('0') << setw(2) << dateCreated.tm_mday << '.'
+		 << right << setfill('0') << setw(2) << 1+dateCreated.tm_mon << '.'
 			<< 1900+dateCreated.tm_year << endl;
 }
 
@@ -28,7 +28,7 @@ void FileItem::Show()
 
 FileIterator::FileIterator (const string & fileMask)
 {
-	this -> FileMask = fileMask ;
+	this->FileMask = fileMask ;
 	FindHandle = 0; 
 }
 
@@ -39,17 +39,21 @@ void FileIterator::setFileMask (const string & mask)
 
 bool FileIterator::hasMore ()
 {
-	cache = doSearch (FileMask); 
-	if (this -> cache != NULL) 
-		return true ;
-	else
-		return false ; 
+	cache = doSearch(FileMask); 
+	return cache != NULL;
 }
 
 FileItem * FileIterator::Next ()
 {
-	FileItem * res=cache ;
-	cache=NULL ;
+	if (cache != NULL)
+	{	
+		FileItem * res=cache ;
+		cache=NULL ;
+		return res;
+	}
+	FileItem * res=doSearch(FileMask) ;
+	if (res==NULL)
+		throw("File not found.");
 	return res;
 } 
 
@@ -61,8 +65,8 @@ inline bool FileIterator::IsDirectory (const _finddata_t & FindData)
 bool FileIterator::compareToMask (const string & mask , const string & file)
 { 
 	int pos=0;
-	for (int i=0; i < mask.length(); ++i)
-		for (int j=pos; j < file.length(); ++j)
+	for (unsigned int i=0; i < mask.length(); ++i)
+		for (unsigned int j=pos; j < file.length(); ++j)
 		{
 			pos=j;
 			if (mask[i] == '*')
@@ -94,9 +98,8 @@ FileItem* FileIterator::doSearch (const string & fileMask)
 	while (_findnext(FindHandle, &FindData) != -1L)
 	{
 		if ((FindData.name == string(".")) || (FindData.name == string("..")))
-		{
 			continue;
-		}
+
 		if (IsDirectory(FindData))
 		{
 			string newFileMask = fileMask;
@@ -105,11 +108,12 @@ FileItem* FileIterator::doSearch (const string & fileMask)
 			while (this->subIterator->hasMore())
 				this->subIterator->Next()->Show();
 		}
+
 		if ( compareToMask(fileMask.substr(fileMask.find_last_of ('\\') + 1), string(FindData.name) ) )
 		{
-			string name = string ( FindData.name );
+			string name = FindData.name;
 			string path = defFileMask.substr (0, defFileMask.find_last_of ('\\'));
-			if ( path == "*.*") 
+			if (path == "*.*") 
 				path = " root ";
 			time_t create = FindData.time_create;
 			cache = new FileItem (name, path, create); 
@@ -117,5 +121,6 @@ FileItem* FileIterator::doSearch (const string & fileMask)
 		} 
 	}
 
-	_findclose (FindHandle); return NULL ;
+	_findclose (FindHandle);
+	return NULL;
 }

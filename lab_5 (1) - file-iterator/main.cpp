@@ -14,6 +14,7 @@ void main (int argc, char *argv[])
 	{  
 		std::cout << "Enter a drive, directory, and/or file mask to list ([drive:][path]filemask) -> " << std::endl;
 		std::cin >> FileMask;
+		std::cout<<std::endl;
 		if (!FileMask.length())
 			return;
 	}
