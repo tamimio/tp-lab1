@@ -4,9 +4,10 @@ class FileItem
 {
 	std::string name;
 	std::string path;
+	tm dateCreated;
 public: 
 	FileItem() {};
-	FileItem (const std::string& name, const std::string& path);
+	FileItem (const std::string& name, const std::string& path, time_t dateCreate);
 	void Show();
 };
 

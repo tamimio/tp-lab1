@@ -1,19 +1,25 @@
 #include <iostream>
 #include <string>
+#include <time.h>
+#include <iomanip>
 
 #include "FileIterator.h"
 
 using namespace std;
 
 
-FileItem::FileItem (const string& name, const string& path)
+FileItem::FileItem (const string& name, const string& path, time_t dateCreate)
 {
 	this->name = name;
 	this->path = path;
+	_localtime64_s( &this->dateCreated, &dateCreate );
 }
 void FileItem::Show()
 {
-	cout<<path<<"\\"<<name<<std::endl;
+	cout << path << "\\" << name << ' ';
+	cout << setfill('0') << setw(2) << dateCreated.tm_mday << '.'
+		 << setfill('0') << setw(2) << 1+dateCreated.tm_mon << '.'
+			<< 1900+dateCreated.tm_year << endl;
 }
 
 
@@ -105,7 +111,8 @@ FileItem* FileIterator::doSearch (const string & fileMask)
 			string path = defFileMask.substr (0, defFileMask.find_last_of ('\\'));
 			if ( path == "*.*") 
 				path = " root ";
-			cache = new FileItem (name, path); 
+			time_t create = FindData.time_create;
+			cache = new FileItem (name, path, create); 
 			return cache ;
 		} 
 	}
