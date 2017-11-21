@@ -117,7 +117,7 @@ FileItem* FileIterator::doSearch (const string & fileMask)
 				path = " root ";
 			time_t create = FindData.time_create;
 			cache = new FileItem (name, path, create); 
-			return cache ;
+			return cache;
 		} 
 	}
 

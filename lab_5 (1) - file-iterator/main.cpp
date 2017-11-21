@@ -23,5 +23,9 @@ void main (int argc, char *argv[])
 	it -> setFileMask ( FileMask );
 
 	while(it->hasMore())
-		it->Next()->Show();
+    {
+        FileItem * nextFile = it->Next();
+		nextFile->Show();
+        delete nextFile;
+	}
 }
